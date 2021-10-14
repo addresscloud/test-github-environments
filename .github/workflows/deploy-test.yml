@@ -2,9 +2,20 @@ name: Deploy test (not really a deploy)
 on:
   push
 jobs:
-  test_job:
+  no_env_deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Print secret
         run: echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
-        
+  dev_deploy:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Print secret
+        run: echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
+  prod_deploy:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: Print secret
+        run: echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
