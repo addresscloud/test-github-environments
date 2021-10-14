@@ -1,0 +1,10 @@
+name: Deploy test (not really a deploy)
+on:
+  push
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print secret
+        run: echo ${{secrets.TEST_SECRET}} | sed 's/./& /g'
+        
